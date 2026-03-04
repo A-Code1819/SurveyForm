@@ -1,0 +1,331 @@
+/* ==========================================
+   PROFESSIONAL HR-FRIENDLY SURVEY THEME
+   Slate + Warm Gray + Soft Teal
+========================================== */
+
+/* ===============================
+   COLOR SYSTEM
+================================ */
+:root {
+  --bg-main: #f4f6f8;
+  --bg-card: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-subtle: #e5e7eb;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --focus-ring: rgba(15, 118, 110, 0.3);
+}
+
+/* ===============================
+   GLOBAL
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ===============================
+   FORM CONTAINER
+================================ */
+#survey-form {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* ===============================
+   HEADER
+================================ */
+#survey-form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   LABELS
+================================ */
+label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   INPUTS
+================================ */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #fafafa;
+  font-size: 0.95rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--focus-ring);
+  background: #ffffff;
+}
+
+/* ===============================
+   RADIO GROUP
+================================ */
+input[type="radio"] {
+  width: auto;
+  margin-right: 0.4rem;
+}
+
+.radio-group {
+  margin-top: 0.6rem;
+}
+
+/* ===============================
+   TEXTAREA
+================================ */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ===============================
+   SUBMIT BUTTON
+================================ */
+button[type="submit"] {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+  background: var(--accent-hover);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* ===============================
+   FOOTER (OPTIONAL)
+================================ */
+.form-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+  #survey-form {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+}
+
+/* ==================================
+   VALIDATION STATES
+================================== */
+
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+input.error,
+select.error,
+textarea.error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+input.success,
+select.success,
+textarea.success {
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+  min-height: 16px;
+}
+
+/* ==================================
+   DARK MODE SUPPORT
+================================== */
+
+:root {
+  --bg-main: #f4f6f8;
+  --bg-card: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-subtle: #e5e7eb;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --focus-ring: rgba(15, 118, 110, 0.3);
+}
+
+/* Dark theme variables */
+body.dark-mode {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-subtle: #334155;
+  --accent: #14b8a6;
+  --accent-hover: #0d9488;
+  --focus-ring: rgba(20, 184, 166, 0.4);
+}
+
+/* Apply variables */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#survey-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+input,
+select,
+textarea {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ==================================
+   TOGGLE SWITCH WITH ICONS
+================================== */
+
+.theme-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 640px;
+  margin: 2rem auto 0 auto;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: #d1d5db;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  font-size: 14px;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+/* Icons */
+.icon {
+  z-index: 1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.sun {
+  color: #f59e0b;
+}
+
+.moon {
+  color: #0ea5e9;
+}
+
+/* Checked State */
+.theme-toggle input:checked + .slider {
+  background-color: var(--accent);
+}
+
+.theme-toggle input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* Icon visibility animation */
+.theme-toggle input:checked + .slider .sun {
+  opacity: 0.3;
+}
+
+.theme-toggle input:checked + .slider .moon {
+  opacity: 1;
+}
+
+.theme-toggle input:not(:checked) + .slider .sun {
+  opacity: 1;
+}
+
+.theme-toggle input:not(:checked) + .slider .moon {
+  opacity: 0.3;
+}
