@@ -42,8 +42,7 @@
         id="email" 
         name="email" 
         placeholder="Your email"
-        required
-      >
+        required>
 
       <label for="role">Who are you?</label>
       <select id="role" name="role" required>
@@ -121,13 +120,10 @@
 
   // Handle form submission feedback
 document.getElementById("survey-form").addEventListener("submit", function(e){
-  e.preventDefault();
-
   const message = document.getElementById("form-message");
+
   message.textContent = "Thank you! Your feedback has been received.";
   message.style.color = "green";
-
-  this.reset();
 });
 </script>
 </body>
