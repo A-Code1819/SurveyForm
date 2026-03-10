@@ -14,191 +14,120 @@
 <div class="theme-toggle-container">
   <label class="theme-toggle">
     <input type="checkbox" id="darkModeToggle">
-    <span class="slider">
-      <span class="icon sun">☀</span>
-      <span class="icon moon">🌙</span>
-    </span>
+    <span class="slider"></span>
   </label>
 </div>
+<section id="feedback" class="feedback-section">
+  <div class="container">
+    <h2>Professional Feedback Survey</h2>
+    <p>We value your insights! Please take a moment to share your feedback on my portfolio and experience.</p>
 <form 
   id="survey-form"
   action="https://formspree.io/f/xgedeoel"
   method="POST"
-  novalidate
->
+  novalidate>
 
-  <h2>Professional Feedback Survey</h2>
-  <p class="form-intro">
-    Thank you for reviewing my portfolio. Your feedback helps me grow professionally.
-  </p>
+  <label for="name">Full Name</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        placeholder="Your name"
+        required
+      >
 
-  <input type="hidden" name="_subject" value="New HR Survey Submission" />
-  <input type="text" name="_gotcha" style="display:none" />
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="Your email"
+        required
+      >
 
-  <!-- Name -->
-  <div class="form-group">
-    <label for="name">Full Name *</label>
-    <input type="text" id="name" name="name" required />
-    <small class="error-message"></small>
+      <label for="role">Who are you?</label>
+      <select id="role" name="role" required>
+        <option value="">Select</option>
+        <option value="recruiter">Recruiter</option>
+        <option value="developer">Developer</option>
+        <option value="HR Manager">HR Manager</option>
+        <option value="Technical Lead">Technical Lead</option>
+        <option value="Executive">Executive</option>
+        <option value="visitor">General Visitor</option>
+      </select>
+
+      <label for="rating">Rate my portfolio</label>
+      <select id="rating" name="rating" required>
+        <option value="">Select rating</option>
+        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+        <option value="4">⭐⭐⭐⭐ Very Good</option>
+        <option value="3">⭐⭐⭐ Good</option>
+        <option value="2">⭐⭐ Fair</option>
+        <option value="1">⭐ Needs Improvement</option>
+      </select>
+
+      <label>Are you interested in hiring or contacting me?</label>
+
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="hire" value="yes" required>
+          Yes
+        </label>
+
+        <label>
+          <input type="radio" name="hire" value="maybe">
+          Maybe
+        </label>
+
+        <label>
+          <input type="radio" name="hire" value="no">
+          No
+        </label>
+      </div>
+
+      <label for="message">Message / Feedback</label>
+      <textarea 
+        id="message" 
+        name="message"
+        placeholder="Share feedback or hiring details..."
+      ></textarea>
+
+      <button type="submit">Send Feedback</button>
+
+    </form>
+
+    <p id="form-message"></p>
+
   </div>
-
-  <!-- Email -->
-  <div class="form-group">
-    <label for="email">Email Address *</label>
-    <input type="email" id="email" name="email" required />
-    <small class="error-message"></small>
-  </div>
-
-  <!-- Role -->
-  <div class="form-group">
-    <label for="role">Current Role *</label>
-    <select id="role" name="role" required>
-      <option value="">Select your role</option>
-      <option>HR Manager</option>
-      <option>Recruiter</option>
-      <option>Technical Lead</option>
-      <option>Executive</option>
-      <option>Other</option>
-    </select>
-    <small class="error-message"></small>
-  </div>
-
-  <!-- Recommendation -->
-  <div class="form-group">
-    <label>Would you consider recommending me? *</label>
-    <div class="radio-group">
-      <label><input type="radio" name="recommend" value="Yes" required /> Yes</label>
-      <label><input type="radio" name="recommend" value="Maybe" /> Maybe</label>
-      <label><input type="radio" name="recommend" value="No" /> No</label>
-    </div>
-    <small class="error-message"></small>
-  </div>
-
-  <!-- Feedback -->
-  <div class="form-group">
-    <label for="improve">Areas I could improve</label>
-    <textarea id="improve" name="improve"></textarea>
-  </div>
-
-  <button type="submit">Submit Feedback</button>
-
-  <div id="form-success" style="display:none;">
-    <p style="color:#0f766e; font-weight:600;">
-      ✅ Thank you! Your feedback has been submitted.
-    </p>
-  </div>
-</form>
-</main>
+</section>
 <script>
-const toggle = document.getElementById("darkModeToggle");
+  const toggle = document.getElementById("darkModeToggle");
 
-// Load saved preference
-if (localStorage.getItem("darkMode") === "enabled") {
-  document.body.classList.add("dark-mode");
-  toggle.checked = true;
-}
-
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
+  // Load saved preference
+  if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
-    localStorage.setItem("darkMode", "enabled");
-  } else {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("darkMode", "disabled");
-  }
-});
-</script>
-<script>
-  const form = document.getElementById("survey-form");
-  const successMessage = document.getElementById("form-success");
-
-  const inputs = form.querySelectorAll("input, select, textarea");
-
-  function showError(input, message) {
-    const group = input.closest(".form-group");
-    const errorDisplay = group.querySelector(".error-message");
-
-    input.classList.remove("success");
-    input.classList.add("error");
-    errorDisplay.textContent = message;
+    toggle.checked = true;
   }
 
-  function showSuccess(input) {
-    const group = input.closest(".form-group");
-    const errorDisplay = group.querySelector(".error-message");
-
-    input.classList.remove("error");
-    input.classList.add("success");
-    errorDisplay.textContent = "";
-  }
-
-  function validateInput(input) {
-    if (input.type === "radio") {
-      const radios = form.querySelectorAll(`input[name="${input.name}"]`);
-      const checked = Array.from(radios).some(r => r.checked);
-
-      const group = input.closest(".form-group");
-      const errorDisplay = group.querySelector(".error-message");
-
-      if (!checked) {
-        errorDisplay.textContent = "Please select an option.";
-        return false;
-      } else {
-        errorDisplay.textContent = "";
-        return true;
-      }
+  toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode", "disabled");
     }
-
-    if (input.hasAttribute("required") && !input.value.trim()) {
-      showError(input, "This field is required.");
-      return false;
-    }
-
-    if (input.type === "email" && input.value) {
-      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
-      if (!emailPattern.test(input.value)) {
-        showError(input, "Please enter a valid email address.");
-        return false;
-      }
-    }
-
-    showSuccess(input);
-    return true;
-  }
-
-  inputs.forEach(input => {
-    input.addEventListener("blur", () => validateInput(input));
-    input.addEventListener("input", () => validateInput(input));
   });
 
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
+  // Handle form submission feedback
+document.getElementById("survey-form").addEventListener("submit", function(e){
+  e.preventDefault();
 
-    let isValid = true;
+  const message = document.getElementById("form-message");
+  message.textContent = "Thank you! Your feedback has been received.";
+  message.style.color = "green";
 
-    inputs.forEach(input => {
-      if (!validateInput(input)) {
-        isValid = false;
-      }
-    });
-
-    if (!isValid) return;
-
-    const data = new FormData(form);
-
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      form.reset();
-      inputs.forEach(input => input.classList.remove("success"));
-      successMessage.style.display = "block";
-    } else {
-      alert("Submission failed. Please try again.");
-    }
+  this.reset();
 });
 </script>
 </body>
